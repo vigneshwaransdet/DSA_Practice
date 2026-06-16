@@ -43,6 +43,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class Contains_Duplicate_217 {
 
@@ -86,8 +87,9 @@ public class Contains_Duplicate_217 {
 //                return true;
 //            }
 //        }
-
-        HashSet<Integer> set = new HashSet<>();
+    //Optimized Approach using HashSet
+//        HashSet<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
         for(int num : nums){
             if(!set.add(num)) {
                 return true;
@@ -95,4 +97,26 @@ public class Contains_Duplicate_217 {
         }
         return false;
     }
+
+    /*
+    Complexity
+
+Interview-ல சொல்லணும்:
+
+Time Complexity
+
+O(n)
+
+Average HashSet operation = O(1)
+
+Space Complexity
+
+O(n)
+
+Worst case:
+
+all unique elements
+
+set stores all.
+     */
 }
