@@ -34,6 +34,9 @@ Only one valid answer exists.
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Two_Sum_1 {
 
 //  Example 1:
@@ -83,24 +86,38 @@ public class Two_Sum_1 {
 //        return  res;
 //    }
 
-    //Optimized Approach
+    //Brute Force Approach with 2 pointers
+//    public int[] twoSum(int[] nums, int target) {
+//        int L=0,R=1;
+//        int[] res =new int[2];
+//        while(L < nums.length) {
+//            if(nums[L] + nums[R] == target) {
+////                res[0] = L;
+////                res[1] = R;
+////                break;
+//                //OR
+//                return new int[]{L,R};
+//            }
+//            R++;
+//            if(R == nums.length) {
+//                L++;
+//                R=L+1;
+//            }
+//        }
+//        return res;
+//    }
+
+    //Optimized Approach using HashMap
     public int[] twoSum(int[] nums, int target) {
-        int L=0,R=1;
-        int[] res =new int[2];
-        while(L < nums.length) {
-            if(nums[L] + nums[R] == target) {
-//                res[0] = L;
-//                res[1] = R;
-//                break;
-                //OR
-                return new int[]{L,R};
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int complement = target - nums[i];
+            if(map.containsKey(complement)){
+                return new int[]{map.get(complement), i};
             }
-            R++;
-            if(R == nums.length) {
-                L++;
-                R=L+1;
-            }
+            map.put(nums[i], i);
         }
-        return res;
+        return new int[]{};
     }
+
 }
